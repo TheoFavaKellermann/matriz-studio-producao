@@ -3,36 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Matriz Studio | Painel de Produção</title>
-  <!-- Ícones do Lucide -->
+  <title>Matriz Studio | Fila de Ordem de Produção SENAI</title>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Cabeçalho da Produção -->
-  <header class="navbar">
+  <!-- Barra de controle superior (ocultada na impressão) -->
+  <header class="navbar no-print">
     <div class="logo-area">
       <h1>Matriz Studio — Produção SENAI</h1>
-      <p>Gestão de Pedidos em Tempo Real</p>
+      <p>Gerador de Ordens de Produção (OP)</p>
     </div>
-    <div class="status-badge">
-      <span class="status-dot"></span> Conectado à Nuvem
-    </div>
+    <button id="btn-atualizar" class="btn-refresh">
+      <i data-lucide="refresh-cw"></i> Atualizar Fila
+    </button>
   </header>
 
-  <!-- Painel Principal de Pedidos -->
+  <!-- Container de Ordens de Produção -->
   <main class="dashboard-container">
-    <div class="dashboard-header">
-      <h2>📋 Fila de Pedidos Recebidos</h2>
-      <button id="btn-atualizar" class="btn-refresh">
-        <i data-lucide="refresh-cw"></i> Atualizar Pedidos
-      </button>
-    </div>
-
-    <!-- Lista onde os pedidos serão renderizados via JS -->
-    <div id="pedidos-container" class="pedidos-grid">
-      <p class="loading-msg">A carregar pedidos da nuvem...</p>
+    <div id="pedidos-container" class="pedidos-list">
+      <p class="loading-msg no-print">A carregar ordens de produção...</p>
     </div>
   </main>
 
