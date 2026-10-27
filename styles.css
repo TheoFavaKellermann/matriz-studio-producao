@@ -1,128 +1,235 @@
-:root {
-    --bg-color: #030712;
-    --card-bg: rgba(15, 23, 42, 0.6);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --text-main: #f3f4f6;
-    --text-muted: #9ca3af;
-    --accent-yellow: #f59e0b;
-    --accent-blue: #3b82f6;
-    --accent-green: #10b981;
-  }
-  
-  * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   body {
-    background-color: var(--bg-color);
-    background-image:
-      radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 40%);
-    color: var(--text-main);
-    min-height: 100vh;
-    padding: 20px 40px;
+    background-color: #f1f5f9;
+    color: #000;
+    padding: 20px;
   }
   
+  /* NAVBAR (Controle superior) */
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--card-border);
+    background-color: #0f172a;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
   }
   
-  .logo-area h1 { font-size: 1.3rem; font-weight: 700; }
-  .logo-area p { font-size: 0.85rem; color: var(--text-muted); }
+  .logo-area h1 { font-size: 1.2rem; }
+  .logo-area p { font-size: 0.8rem; color: #94a3b8; }
   
-  .status-badge {
+  .btn-refresh {
+    background: #3b82f6;
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid var(--accent-green);
-    color: var(--accent-green);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    font-weight: bold;
+  }
+  .btn-refresh:hover { background: #2563eb; }
+  
+  .pedidos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
   }
   
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent-green);
-    border-radius: 50%;
-    box-shadow: 0 0 8px var(--accent-green);
+  /* CONTAINER DA FICHA DE ORDEM DE PRODUÇÃO */
+  .op-card {
+    background: #fff;
+    width: 100%;
+    max-width: 800px;
+    padding: 40px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    page-break-after: always;
   }
   
-  .dashboard-container { margin-top: 30px; }
+  /* BOTÃO DE IMPRIMIR CADA OP */
+  .btn-print-op {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .btn-print-op:hover { background: #059669; }
   
-  .dashboard-header {
+  /* CABEÇALHO DO DOCUMENTO */
+  .op-header {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  .op-logo {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  .op-title-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
     margin-bottom: 20px;
   }
   
-  .btn-refresh {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--card-border);
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: 0.3s;
+  .op-title {
+    font-size: 1.6rem;
+    font-weight: bold;
   }
   
-  .btn-refresh:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-1px);
+  .op-meta {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    text-align: left;
   }
   
-  .pedidos-grid {
+  .op-company {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  /* SEÇÃO DE CAMPOS GERAIS */
+  .op-grid-fields {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+    font-size: 0.8rem;
   }
   
-  .pedido-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 20px;
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  .field-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-bottom: 4px;
   }
   
-  .pedido-card-header {
+  .field-group span {
+    font-size: 0.85rem;
+  }
+  
+  .line-field {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    min-width: 80px;
+    height: 16px;
+  }
+  
+  /* TABELAS DA OP */
+  .op-section-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  
+  .op-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .op-table th {
+    background-color: #e2e8f0;
+    border: 1px solid #cbd5e1;
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .op-table td {
+    border: 1px solid #cbd5e1;
+    padding: 6px 10px;
+  }
+  
+  /* OBSERVAÇÕES E LINHAS */
+  .obs-lines {
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+  
+  .obs-line {
+    border-bottom: 1px solid #000;
+    height: 25px;
+    width: 100%;
+  }
+  
+  .obs-text {
+    font-size: 0.85rem;
+    padding: 5px 0;
+    font-style: italic;
+  }
+  
+  /* RODAPÉ DO DOCUMENTO */
+  .op-footer-fields {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+    margin-bottom: 15px;
   }
   
-  .pedido-id { font-weight: bold; color: var(--accent-yellow); }
-  .pedido-data { font-size: 0.75rem; color: var(--text-muted); }
-  
-  .pedido-detalhes p {
-    font-size: 0.9rem;
-    margin: 4px 0;
-    color: var(--text-main);
-  }
-  
-  .pedido-detalhes span { color: var(--text-muted); }
-  
-  .loading-msg, .empty-msg {
-    color: var(--text-muted);
-    grid-column: 1 / -1;
+  .op-disclaimer {
     text-align: center;
-    padding: 40px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-top: 15px;
+    text-transform: uppercase;
+  }
+  
+  .senai-logo-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .senai-badge {
+    background-color: #0056b3;
+    color: white;
+    font-weight: italic;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 4px 15px;
+    display: inline-block;
+    letter-spacing: 2px;
+  }
+  
+  /* REGRAS DE IMPRESSÃO (Esconde os botões e ajusta a página) */
+  @media print {
+    body { background: white; padding: 0; }
+    .no-print, .btn-print-op { display: none !important; }
+    .op-card {
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      width: 100%;
+      max-width: 100%;
+    }
   }
