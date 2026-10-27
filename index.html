@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matriz Studio | Painel de Produção</title>
+  <!-- Ícones do Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Cabeçalho da Produção -->
+  <header class="navbar">
+    <div class="logo-area">
+      <h1>Matriz Studio — Produção SENAI</h1>
+      <p>Gestão de Pedidos em Tempo Real</p>
+    </div>
+    <div class="status-badge">
+      <span class="status-dot"></span> Conectado à Nuvem
+    </div>
+  </header>
+
+  <!-- Painel Principal de Pedidos -->
+  <main class="dashboard-container">
+    <div class="dashboard-header">
+      <h2>📋 Fila de Pedidos Recebidos</h2>
+      <button id="btn-atualizar" class="btn-refresh">
+        <i data-lucide="refresh-cw"></i> Atualizar Pedidos
+      </button>
+    </div>
+
+    <!-- Lista onde os pedidos serão renderizados via JS -->
+    <div id="pedidos-container" class="pedidos-grid">
+      <p class="loading-msg">A carregar pedidos da nuvem...</p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
